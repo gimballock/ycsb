@@ -69,18 +69,25 @@ def load(db, target=None):
             run(_at(_ycsbloadcmd(database, clientno, timestamp), timestamp))
 
 @roles('client')
-def run_workload(db, workload, target=None):
+def run_workload(db, workload, target=None, instances=1):
     """Starts running of the workload"""
     timestamp = base_time()
     print green(timestamp, bold = True)
     database = get_db(db)
     load = get_workload(workload)
+    instance=int(instances)
     with cd(database['home']):
         if target is not None:
             part = int(target) / len(env.roledefs['client'])
-            run(_at(_ycsbruncmd(database, load, timestamp, part), timestamp))
+            id = 0
+            while id < instance:
+                run(_at(_ycsbruncmd(database, load, timestamp, part), timestamp))
+                id += 1
         else:
-            run(_at(_ycsbruncmd(database, load, timestamp), timestamp))
+            id = 0
+            while id < instance:
+                run(_at(_ycsbruncmd(database, load, timestamp), timestamp))
+                id += 1
 
 @roles('client')
 def status(db):
@@ -241,7 +248,7 @@ def deploy():
     client1 = env.roledefs['client'][0]
     run('scp %s:ycsb.tar.gz .' % client1)
     with cd('/opt'):
-        run('ln -sf ycsb-0.1.4 ycsb')
-        run('rm -rf ycsb-0.1.4')
-        run('tar xzvf ~/ycsb.tar.gz')
+        run('sudo ln -sf ycsb-0.1.4 ycsb')
+        run('sudo rm -rf ycsb-0.1.4')
+        run('sudo tar xzvf ~/ycsb.tar.gz')
         
