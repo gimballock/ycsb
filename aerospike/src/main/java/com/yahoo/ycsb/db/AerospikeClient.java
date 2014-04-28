@@ -127,6 +127,7 @@ public class AerospikeClient extends com.yahoo.ycsb.DB{
 		Bin[] bins = new Bin[values.size()];
 		int index = 0;
 		for (String binName : values.keySet()){
+			bins[index] = new Bin(binName, Value.get(values.get(binName).toString()));
 			bins[index] = new Bin(binName, Value.get(values.get(binName)));
 			index++;
 		}
@@ -134,7 +135,8 @@ public class AerospikeClient extends com.yahoo.ycsb.DB{
 			as.put(writePolicy, new Key(NAMESPACE, SET, key), bins);
 			return OK;
 		} catch (AerospikeException e){
-			return RESULT_CODE_MAPPER.get(e.getResultCode());
+			return e.getResultCode();
+			//return RESULT_CODE_MAPPER.get(e.getResultCode());
 		}
 	}
 
