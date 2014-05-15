@@ -20,9 +20,10 @@ https://fabric.readthedocs.org/en/1.3.2/
 git clone https://github.com/aerospike/ycsb
 cd ycsb    
 ```
-###Install the python Fabric module
+###Install the python Fabric module and time module
 ```
 pip install fabric
+pip install pytz
 ```
 ###Set up a database and client hosts to benchmark. 
 There is a README file under each binding directory. You must have SSH (and in most cases root) access to all your hosts.
