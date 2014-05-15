@@ -5,8 +5,11 @@ This version of the YCSB tool adds adds support for Aerospike 3 to the Thumbtack
 
 ##Links
 http://wiki.github.com/brianfrankcooper/YCSB/
+
 https://github.com/couchbaselabs/YCSB
+
 http://research.yahoo.com/Web_Information_Management/YCSB
+
 https://fabric.readthedocs.org/en/1.3.2/
 
 
@@ -19,58 +22,51 @@ cd ycsb
 ```
 
 
-2. Install `Fabrick`
-```bash
+2. Install Fabrick
+```
 pip install fabric
 ```
 
 3. Set up a database and client hosts to benchmark. 
-   There is a README file under each binding directory.
-   
-   You must have SSH (and in most cases root) access to all your hosts.
+   There is a README file under each binding directory. You must have SSH (and in most cases root) access to all your hosts.
 
 4. Configure YCSB build script to build database binders
    Edit pom.xml, uncomment modules related to databases which you chose in `<modules>` section
    
-
 5. Configure hosts, databases and workloads settings:
    Edit files: conf/hosts.py, conf/databases.py, conf/workloads.py
 
 6. Build and deploy YCSB to client hosts
-```bash
-    fab ycsb_deploy
+```
+fab ycsb_deploy
 ```
 7. Load data to databases
-```bash
-    fab ycsb_load:db=<dbname>
+```
+fab ycsb_load:db=<dbname>
 ```
    `<dbname>` is aerospike, couchbase, couchbase2, cassandra, 
    mongodb or any other you configured
    Edit conf/workloads.py to confiture workloads root directory
 
 8. Run YCSB workload
-```bash
-    fab ycsb_run:db=<dbname>,workload=A
+```
+fab ycsb_run:db=<dbname>,workload=A
 ```
 9. Check the YCSB status
-```bash 
-    fab ycsb_status:db=<dbname>
+```
+fab ycsb_status:db=<dbname>
 ```
 10. Download YCSB results and logs
-```bash
-    fab ycsb_get:db=<dbname>,do=True
+```
+fab ycsb_get:db=<dbname>,do=True
 ```    
-   You'll get some .out and .err files in the current directory downloaded
-   from all your clients.
+You'll get some .out and .err files in the current directory downloaded from all your clients.
 
 11. Aggregate the YCSB results
-```bash
-    ./bin/merge.py
+```
+./bin/merge.py
 ```    
-   This script gets the most important parameters from YCSB .out files,
-   such as throughput and latency, aggregates the results from multiple clients
-   and prints the result as tab-separated values which can be easy pasted
-   into any spreadsheet.
+This script gets the most important parameters from YCSB .out files, such as throughput and latency, aggregates the results from multiple clients and prints the result as tab-separated values which can be easy pasted into any spreadsheet.
 
 ##Notes
 
