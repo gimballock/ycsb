@@ -20,7 +20,7 @@ https://fabric.readthedocs.org/en/1.3.2/
 git clone https://github.com/aerospike/ycsb
 cd ycsb    
 ```
-###Install Fabrick
+###Install the python Fabric module
 ```
 pip install fabric
 ```
