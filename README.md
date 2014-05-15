@@ -1,15 +1,14 @@
 #Yahoo! Cloud System Benchmark (YCSB)
 
-This version of the YCSB tool is modified by Thumbtack Technology to add 
-support for Aerospike and Couchbase databases, to improve MongoDB driver 
-and to add some automation to run YCSB on multiple clients.
+This version of the YCSB tool adds adds support for Aerospike 3 to the Thumbtack Technology version that was originally modified to to add support for Aerospike and Couchbase databases, to improve MongoDB driver and to add some automation to run YCSB on multiple clients.
+
 
 ##Links
 http://wiki.github.com/brianfrankcooper/YCSB/
 https://github.com/couchbaselabs/YCSB
 http://research.yahoo.com/Web_Information_Management/YCSB
-ycsb-users@yahoogroups.com
-http://docs.fabfile.org/en/1.3.2/
+https://fabric.readthedocs.org/en/1.3.2/
+
 
 ##Step by step
 
@@ -25,7 +24,7 @@ http://docs.fabfile.org/en/1.3.2/
    You must have SSH (and in most cases root) access to all your hosts.
 
 3. Configure YCSB build script to build database binders
-   Edit pom.xml, uncomment modules related to databases which you chose in <modules> section
+   Edit pom.xml, uncomment modules related to databases which you chose in `<modules>` section
 
 4. Configure hosts, databases and workloads settings:
    Edit files: conf/hosts.py, conf/databases.py, conf/workloads.py
