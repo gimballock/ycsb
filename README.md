@@ -15,38 +15,39 @@ https://fabric.readthedocs.org/en/1.3.2/
 
 ##Step by step
 
-1. Download the latest release of YCSB
+###Download the latest release of YCSB
 ```
 git clone https://github.com/aerospike/ycsb
 cd ycsb    
 ```
-2. Install Fabrick
+###Install Fabrick
 ```
 pip install fabric
 ```
-3. Set up a database and client hosts to benchmark. 
-   There is a README file under each binding directory. You must have SSH (and in most cases root) access to all your hosts.
-
-4. Configure YCSB build script to build database binders. Edit pom.xml, uncomment modules related to databases which you chose in `<modules>` section
-5. Configure hosts, databases and workloads settings: Edit files: conf/hosts.py, conf/databases.py, conf/workloads.py
-6. Build and deploy YCSB to client hosts
+###Set up a database and client hosts to benchmark. 
+There is a README file under each binding directory. You must have SSH (and in most cases root) access to all your hosts.
+###Configure YCSB build script to build database binders.
+Edit pom.xml, uncomment modules related to databases which you chose in `<modules>` section
+###Configure hosts, databases and workloads settings
+Edit files: conf/hosts.py, conf/databases.py, conf/workloads.py
+###Build and deploy YCSB to client hosts
 ```
 fab ycsb_deploy
 ```
-7. Load data to databases
+###Load data to databases
 ```
 fab ycsb_load:db=<dbname>
 ```
 `<dbname>` is aerospike, couchbase, couchbase2, cassandra, mongodb or any other you configured.Edit conf/workloads.py to confiture workloads root directory
-8. Run YCSB workload
+###Run YCSB workload
 ```
 fab ycsb_run:db=<dbname>,workload=A
 ```
-9. Check the YCSB status
+###Check the YCSB status
 ```
 fab ycsb_status:db=<dbname>
 ```
-10. Download YCSB results and logs
+###Download YCSB results and logs
 ```
 fab ycsb_get:db=<dbname>,do=True
 ```    
@@ -58,7 +59,6 @@ You'll get some .out and .err files in the current directory downloaded from all
 This script gets the most important parameters from YCSB .out files, such as throughput and latency, aggregates the results from multiple clients and prints the result as tab-separated values which can be easy pasted into any spreadsheet.
 
 ##Notes
-
 This tool was tested using following software versions
 * Ubuntu Server (12.04)
 * Git (1.7.10.4)
