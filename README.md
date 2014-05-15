@@ -12,28 +12,35 @@ https://fabric.readthedocs.org/en/1.3.2/
 
 ##Step by step
 
-1. Download the latest release of YCSB:
-
-```bash
-    git clone https://github.com/aerospike/ycsb
-    cd ycsb
+1. Download the latest release of YCSB
 ```
-2. Set up a database and client hosts to benchmark. 
+git clone https://github.com/aerospike/ycsb
+cd ycsb    
+```
+
+
+2. Install `Fabrick`
+```bash
+pip install fabric
+```
+
+3. Set up a database and client hosts to benchmark. 
    There is a README file under each binding directory.
    
    You must have SSH (and in most cases root) access to all your hosts.
 
-3. Configure YCSB build script to build database binders
+4. Configure YCSB build script to build database binders
    Edit pom.xml, uncomment modules related to databases which you chose in `<modules>` section
+   
 
-4. Configure hosts, databases and workloads settings:
+5. Configure hosts, databases and workloads settings:
    Edit files: conf/hosts.py, conf/databases.py, conf/workloads.py
 
-5. Build and deploy YCSB to client hosts
+6. Build and deploy YCSB to client hosts
 ```bash
     fab ycsb_deploy
 ```
-6. Load data to databases
+7. Load data to databases
 ```bash
     fab ycsb_load:db=<dbname>
 ```
@@ -41,22 +48,22 @@ https://fabric.readthedocs.org/en/1.3.2/
    mongodb or any other you configured
    Edit conf/workloads.py to confiture workloads root directory
 
-7. Run YCSB workload
+8. Run YCSB workload
 ```bash
     fab ycsb_run:db=<dbname>,workload=A
 ```
-8. Check the YCSB status
+9. Check the YCSB status
 ```bash 
     fab ycsb_status:db=<dbname>
 ```
-9. Download YCSB results and logs
+10. Download YCSB results and logs
 ```bash
     fab ycsb_get:db=<dbname>,do=True
 ```    
    You'll get some .out and .err files in the current directory downloaded
    from all your clients.
 
-10. Aggregate the YCSB results
+11. Aggregate the YCSB results
 ```bash
     ./bin/merge.py
 ```    
