@@ -20,22 +20,15 @@ https://fabric.readthedocs.org/en/1.3.2/
 git clone https://github.com/aerospike/ycsb
 cd ycsb    
 ```
-
-
 2. Install Fabrick
 ```
 pip install fabric
 ```
-
 3. Set up a database and client hosts to benchmark. 
    There is a README file under each binding directory. You must have SSH (and in most cases root) access to all your hosts.
 
-4. Configure YCSB build script to build database binders
-   Edit pom.xml, uncomment modules related to databases which you chose in `<modules>` section
-   
-5. Configure hosts, databases and workloads settings:
-   Edit files: conf/hosts.py, conf/databases.py, conf/workloads.py
-
+4. Configure YCSB build script to build database binders. Edit pom.xml, uncomment modules related to databases which you chose in `<modules>` section
+5. Configure hosts, databases and workloads settings: Edit files: conf/hosts.py, conf/databases.py, conf/workloads.py
 6. Build and deploy YCSB to client hosts
 ```
 fab ycsb_deploy
@@ -44,10 +37,7 @@ fab ycsb_deploy
 ```
 fab ycsb_load:db=<dbname>
 ```
-   `<dbname>` is aerospike, couchbase, couchbase2, cassandra, 
-   mongodb or any other you configured
-   Edit conf/workloads.py to confiture workloads root directory
-
+`<dbname>` is aerospike, couchbase, couchbase2, cassandra, mongodb or any other you configured.Edit conf/workloads.py to confiture workloads root directory
 8. Run YCSB workload
 ```
 fab ycsb_run:db=<dbname>,workload=A
@@ -61,7 +51,6 @@ fab ycsb_status:db=<dbname>
 fab ycsb_get:db=<dbname>,do=True
 ```    
 You'll get some .out and .err files in the current directory downloaded from all your clients.
-
 11. Aggregate the YCSB results
 ```
 ./bin/merge.py
