@@ -13,12 +13,18 @@ http://research.yahoo.com/Web_Information_Management/YCSB
 https://fabric.readthedocs.org/en/1.3.2/
 
 
+##Prerequisite
+
+maven: http://maven.apache.org
+pip: http://pip.readthedocs.org/en/latest/installing.html
+
 ##Step by step
 
 ###Download the latest release of YCSB
 ```
 git clone https://github.com/aerospike/ycsb
 cd ycsb    
+mvn package
 ```
 ###Install the python Fabric module and time module
 ```
