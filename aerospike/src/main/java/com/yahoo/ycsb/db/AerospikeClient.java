@@ -56,7 +56,7 @@ public class AerospikeClient extends com.yahoo.ycsb.DB{
 	public void init() throws DBException {
 		Properties props = getProperties();
 		int port;
-
+		
 		//retrieve port
 		String portString = props.getProperty("port");
 		if (portString != null) {
@@ -123,13 +123,12 @@ public class AerospikeClient extends com.yahoo.ycsb.DB{
 	@Override
 	public int update(String table, String key,
 			HashMap<String, ByteIterator> values) {
-
+	
 		Bin[] bins = new Bin[values.size()];
 		int index = 0;
-		for (String binName : values.keySet()){
-			bins[index] = new Bin(binName, Value.get(values.get(binName).toString()));
-			bins[index] = new Bin(binName, Value.get(values.get(binName)));
-			index++;
+		for (Map.Entry<String, ByteIterator> entry : values.entrySet() ) {
+		    bins[index] = new Bin(entry.getKey(), entry.getValue().toArray() );    
+		    index++;
 		}
 		try {
 			as.put(writePolicy, new Key(NAMESPACE, SET, key), bins);
