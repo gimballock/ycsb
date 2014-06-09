@@ -7,19 +7,19 @@ databases = {
         'home': '/run/shm',     #database home, to put logs there
         'command': 'aerospike', #database name to pass to ycsb command
         'properties': {         #properties to pass to ycsb command as -p name=value
-            'host': 'e1.citrusleaf.local',  #database connection params
+            'host': '<<db-hostname>>',  #database connection params
             'port': 3000,
             'ns': 'test',
             'set': 'YCSB',
         },
         'status': {
             'hosts': hosts.env.roledefs['server'][0:1],     #hosts on which to run the status command
-            'command': '/opt/citrusleaf/bin/clmonitor -e info'  #the status command
+            'command': '/opt/aerospike/bin/asmonitor -e info'  #the status command
         },
         'failover': {
             'files': [],
-            'kill_command': '/usr/bin/killall -9 cld',
-            'start_command': '/etc/init.d/citrusleaf start',
+            'kill_command': '/usr/bin/killall -9 asd',
+            'start_command': '/etc/init.d/aerospike start',
         },
     },
 
