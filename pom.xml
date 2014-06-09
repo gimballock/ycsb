@@ -61,9 +61,9 @@
 
   <modules>
     <!--module>build-tools</module-->
-    <module>cassandra</module>
+    <!--<module>cassandra</module>-->
     <module>core</module>
-    <module>hbase</module>
+    <!--<module>hbase</module>-->
     <!--<module>hypertable</module>-->
     <!--<module>dynamodb</module>-->
     <!--<module>elasticsearch</module>-->
@@ -71,15 +71,15 @@
     <!--<module>infinispan</module>-->
     <!--<module>jdbc</module>-->
     <!--<module>mapkeeper</module>-->
-    <module>mongodb</module>
+    <!--<module>mongodb</module>-->
     <!--<module>orientdb</module>-->
     <!--module>nosqldb</module-->
     <!--<module>redis</module>-->
     <!--<module>voldemort</module>-->
     <module>aerospike</module>
-    <module>memcached</module>
+    <!--<module>memcached</module>-->
     <!--<module>couchbase-1.8</module>-->
-    <module>couchbase-2.0</module>   <!--couchbase-2.0 conflicts with couchbase-1.8, use one of them-->
+    <!--<module>couchbase-2.0</module>-->   <!--couchbase-2.0 conflicts with couchbase-1.8, use one of them-->
     <!--<module>membase</module>-->
     <module>distribution</module>
   </modules>
