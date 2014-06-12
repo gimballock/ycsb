@@ -10,10 +10,10 @@ env.show = ['debug']
 
 env.roledefs = {
     #list of client hosts
-    'client': ['']
+    'client': [''],
 
     #list of server hosts
-    'server': ['']
+    'server': [''],
 
     #list of all available client hosts
     'all_client': ['']
